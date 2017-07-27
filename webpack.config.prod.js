@@ -21,7 +21,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js',
-        publicPath: '/dist/',
+        publicPath: '/',
         chunkFilename:'[chunkhash:5].min.js'
     },
     plugins: [
@@ -46,18 +46,18 @@ module.exports = {
     ],
     module: {
         loaders: [{
-            test: /\.js[x]$/,
+            test: /\.jsx?$/,
             loaders: ['babel-loader'],
             include: [APP_PATH]
         }, {
             test: /\.css$/,
-            exclude: /^node_modules$/,
-            loaders: ExtractTextPlugin.extract({fallback:'style',use: ['css', 'autoprefixer']}),
-            include: [APP_PATH]
+            // exclude: /^node_modules$/,
+            loaders: ExtractTextPlugin.extract({fallback:'style-loader',use: [ 'css-loader', 'autoprefixer-loader']}),
+            // include: [APP_PATH]
         }, {
             test: /\.less$/,
             exclude: /^node_modules$/,
-            loaders: ExtractTextPlugin.extract({fallback:'style',use: ['css', 'autoprefixer']}),
+            loaders: ExtractTextPlugin.extract({fallback:'style-loader',use: ['css', 'autoprefixer']}),
             include: [APP_PATH]
         }, {
             test: /\.scss$/,
@@ -76,9 +76,12 @@ module.exports = {
             loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]',
             //注意后面那个limit的参数，当你图片大小小于这个限制的时候，会自动启用base64编码图片
             include: [APP_PATH]
+        }, {
+            test: /\.(ts|tsx)$/,
+            loaders: ['babel-loader', 'ts-loader']
         }]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.less', '.scss', '.css'], //后缀名自动补全
+        extensions: ['.js', '.jsx', '.less', '.scss', '.css', '.tsx', '.ts'], //后缀名自动补全
     }
 };

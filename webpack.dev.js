@@ -68,6 +68,6 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.less', '.scss', '.css', '.ts'], //后缀名自动补全
+        extensions: ['.js', '.jsx', '.less', '.scss', '.css', '.ts', '.tsx'], //后缀名自动补全
     }
 };

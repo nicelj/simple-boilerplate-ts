@@ -4,6 +4,8 @@
 import React from 'react';
 import template from '../config/template';
 import type from './type';
+import Page from './page';
+import Myclass from './hellots';
 
 const Index = ({state, actions})=> {
     const {value} = state.index;
@@ -20,6 +22,10 @@ const Index = ({state, actions})=> {
             <div>
                 {typea.value}
             </div>
+            <hr/>
+            <Page />
+            <hr/>
+            <Myclass />
         </div>
     )
 }

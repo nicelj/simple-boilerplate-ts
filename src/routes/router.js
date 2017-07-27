@@ -4,7 +4,6 @@
 import {Router, Route, IndexRoute, Redirect, hashHistory , browserHistory} from 'react-router';
 import React, {Component, PropTypes} from 'react';
 import Index from '../components';
-import Page from '../components/page.tsx';
 
 import 'normalize.css';
 import '../stylesheets/index.scss';
@@ -21,7 +20,6 @@ const rootRoute = (
     <Router history={history}>
         <Route path="/" component={Roots}>
             <IndexRoute component={Index}/>
-            <Route path="tspage" component={Page}/>
             <Redirect from='*' to='/'/>
         </Route>
     </Router>
